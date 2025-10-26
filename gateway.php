@@ -241,7 +241,7 @@ class WC_Gateway_iPaymu extends \WC_Payment_Gateway
         $body['product'][0]     = 'Order #' . trim(strval($order_id));
         $body['qty'][0]         = 1;
         $body['price'][0]       = $order->get_total();
-        $body['imageUrl'][0]       = '' // Customize icon
+        $body['imageUrl'][0]    = 'https://assets.gdgjakarta.org/gdg-jakarta/gdg-sign-bubble-square.png'; // Customize icon
 
 
         if (!empty($buyerName)) {
