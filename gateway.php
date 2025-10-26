@@ -170,9 +170,10 @@ class WC_Gateway_iPaymu extends \WC_Payment_Gateway
         $buyerEmail = $order->get_billing_email();
         $buyerPhone = $order->get_billing_phone();
 
-        $body['product'] = [];
-        $body['qty']     = [];
-        $body['price']   = [];
+        $body['product']  = [];
+        $body['qty']      = [];
+        $body['price']    = [];
+        $body['imageUrl'] = [];
 
         $width  = array();
         $height = array();
@@ -240,6 +241,7 @@ class WC_Gateway_iPaymu extends \WC_Payment_Gateway
         $body['product'][0]     = 'Order #' . trim(strval($order_id));
         $body['qty'][0]         = 1;
         $body['price'][0]       = $order->get_total();
+        $body['imageUrl'][0]       = '' // Customize icon
 
 
         if (!empty($buyerName)) {
@@ -392,7 +394,11 @@ class WC_Gateway_iPaymu extends \WC_Payment_Gateway
             $url = 'https://sandbox.ipaymu.com/api/v2/payment';    
         }
 
-        $buyerName  = $order->get_billing_first_name() . $order->get_billing_last_name();
+        $firstName = $order->get_billing_first_name();
+        $lastName = $order->get_billing_last_name();
+
+        // Variables inside double quotes are replaced by their values
+        $buyerName = "$firstName $lastName";
         $buyerEmail = $order->get_billing_email();
         $buyerPhone = $order->get_billing_phone();
 
