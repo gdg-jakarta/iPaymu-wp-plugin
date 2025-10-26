@@ -166,7 +166,7 @@ class WC_Gateway_iPaymu extends \WC_Payment_Gateway
 
         $order = new \WC_Order($order_id);
 
-        $buyerName  = $order->get_billing_first_name() . $order->get_billing_last_name();
+        $buyerName = $order->get_billing_first_name() . " " . $order->get_billing_last_name();
         $buyerEmail = $order->get_billing_email();
         $buyerPhone = $order->get_billing_phone();
 
